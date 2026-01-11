@@ -1,26 +1,185 @@
 @import "tailwindcss";
 
 :root {
+  --primary: #3d2bd1;
+  --primary-foreground: #ffffff;
+  --accent: #7a0dc7;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --gradient-from-light: #4f39f6;
+  --gradient-to-light: #9810fa;
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@utility bg-gradient-primary {
+  background: linear-gradient(
+    140deg,
+    var(--gradient-from-light) 0%,
+    var(--gradient-to-light) 100%
+  );
+}
+
+@utility text-gradient-primary {
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Animations --- */
+
+/* Smooth Floating Animation */
+@keyframes smoothFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tw-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-15px) rotate(var(--tw-rotate, 0deg));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-smooth-float {
+  animation: smoothFloat 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Bounce Slow Animation */
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 4s ease-in-out infinite;
+}
+
+/* Float Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  66% {
+    transform: translateY(10px) translateX(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Fade In Animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+/* Slide Up Animation */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+/* --- Scroll Animations --- */
+.scroll-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-section.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-animate {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.section-visible .card-animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Generate 6 staggered delays */
+.section-visible .card-animate:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.section-visible .card-animate:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.section-visible .card-animate:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.section-visible .card-animate:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.section-visible .card-animate:nth-child(5) {
+  transition-delay: 0.5s;
+}
+.section-visible .card-animate:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+/* Ensure hero section content is above background */
+section#home > * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
