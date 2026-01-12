@@ -16,6 +16,8 @@ import {
   Instagram,
   HardDrive,
   Zap,
+  Menu,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -27,6 +29,7 @@ export default function SatelliteConnect() {
     phone: "",
     message: "",
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
@@ -77,13 +80,17 @@ export default function SatelliteConnect() {
     }
   };
 
+  const handleNavClick = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-0 h-20 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="flex items-center ">
-              <div className="relative ">
+            <div className="flex items-center">
+              <div className="relative">
                 <Image
                   src="/logos/logo.png"
                   alt="Satellite Connect Logo"
@@ -95,6 +102,8 @@ export default function SatelliteConnect() {
               </div>
             </div>
           </div>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center font-semibold text-sm uppercase tracking-wider">
             <a href="#home" className="hover:text-primary transition-colors">
               Home
@@ -111,6 +120,55 @@ export default function SatelliteConnect() {
             <a
               href="#contact"
               className="bg-gradient-primary text-white px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all"
+            >
+              Free Quote
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div
+          className={`md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen
+              ? "max-h-96 opacity-100 visible"
+              : "max-h-0 opacity-0 invisible"
+          } overflow-hidden`}
+        >
+          <div className="px-4 py-6 space-y-6">
+            <a
+              href="#home"
+              className="block font-semibold text-sm uppercase tracking-wider hover:text-primary transition-colors py-2"
+              onClick={handleNavClick}
+            >
+              Home
+            </a>
+            <a
+              href="#solutions"
+              className="block font-semibold text-sm uppercase tracking-wider hover:text-primary transition-colors py-2"
+              onClick={handleNavClick}
+            >
+              Solutions
+            </a>
+            <a
+              href="#process"
+              className="block font-semibold text-sm uppercase tracking-wider hover:text-primary transition-colors py-2"
+              onClick={handleNavClick}
+            >
+              Process
+            </a>
+            <a
+              href="#contact"
+              className="block bg-gradient-primary text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg transition-all text-center font-semibold text-sm uppercase tracking-wider mt-4"
+              onClick={handleNavClick}
             >
               Free Quote
             </a>
@@ -150,7 +208,6 @@ export default function SatelliteConnect() {
             </div>
           </div>
 
-          {/* Main Static Image with Floating Smooth Elements */}
           <div className="relative flex justify-center items-center">
             {/* Central Static Image with glow effect */}
             <div className="relative z-10 w-full max-w-[500px]">
@@ -166,7 +223,7 @@ export default function SatelliteConnect() {
             </div>
 
             {/* Floating Div 1: Signal Quality - Smooth Float */}
-            <div className="absolute top-10 -left-6 z-20 bg-white/90 backdrop-blur-sm p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-smooth-float [animation-duration:4s] border border-blue-100">
+            <div className="absolute top-24 left-0 z-20 bg-white/90 backdrop-blur-sm p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-smooth-float [animation-duration:4s] border border-blue-100">
               <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center text-white">
                 <Zap size={20} fill="white" />
               </div>
@@ -179,7 +236,7 @@ export default function SatelliteConnect() {
             </div>
 
             {/* Floating Div 2: Happy Users - Smooth Float (Offset timing) */}
-            <div className="absolute bottom-20 -right-4 z-20 bg-white/90 backdrop-blur-sm p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-smooth-float [animation-duration:5s] [animation-delay:1s] border border-blue-100">
+            <div className="absolute bottom-20 right-0 z-20 bg-white/90 backdrop-blur-sm p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-smooth-float [animation-duration:5s] [animation-delay:1s] border border-blue-100">
               <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center text-white">
                 <Star size={20} fill="white" />
               </div>
@@ -222,8 +279,9 @@ export default function SatelliteConnect() {
         </div>
       </section>
 
+      {/* Rest of your existing code continues... */}
       {/* Trust Bar */}
-      <section className="pt-12  ">
+      <section className="pt-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">
             Secure Payments Accepted Via
@@ -280,7 +338,7 @@ export default function SatelliteConnect() {
       <section id="solutions" className="py-24 bg-gray-50 scroll-section">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4  tracking-tight">
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">
               One-Stop <span className="text-gradient-primary">Solutions</span>
             </h2>
             <p className="text-gray-500">
@@ -336,6 +394,7 @@ export default function SatelliteConnect() {
           </div>
         </div>
       </section>
+
       {/* Technology & Heartland Section */}
       <section className="py-24 bg-white scroll-section">
         <div className="max-w-7xl mx-auto px-4">
@@ -369,7 +428,7 @@ export default function SatelliteConnect() {
                   />
                 </div>
                 {/* Floating tech badge */}
-                <div className="absolute -top-4 -right-4 bg-gradient-primary text-white px-6 py-3 rounded-2xl shadow-xl rotate-3 animate-smooth-float">
+                <div className="absolute -top-2 right-1 bg-gradient-primary text-white px-6 py-3 rounded-2xl shadow-xl rotate-3 animate-smooth-float">
                   <p className="text-sm font-black tracking-wider">
                     TECH ADVANCED
                   </p>
@@ -380,7 +439,7 @@ export default function SatelliteConnect() {
 
           {/* Row 2: Image Left, Text Right (Reversed) */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="card-animate ">
+            <div className="card-animate">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-primary rounded-[3rem] opacity-20 blur-lg animate-pulse" />
                 <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
@@ -391,7 +450,7 @@ export default function SatelliteConnect() {
                   />
                 </div>
                 {/* Floating family badge */}
-                <div className="absolute -bottom-4 -left-4 bg-gradient-primary text-white px-6 py-3 rounded-2xl shadow-xl -rotate-3 animate-smooth-float">
+                <div className="absolute -top-2 left-1 bg-gradient-primary text-white px-6 py-3 rounded-2xl shadow-xl -rotate-3 animate-smooth-float">
                   <p className="text-sm font-black tracking-wider">
                     FAMILY FOCUSED
                   </p>
@@ -419,8 +478,9 @@ export default function SatelliteConnect() {
           </div>
         </div>
       </section>
+
       {/* Process Section */}
-      <section id="process" className="py-24  scroll-section bg-process">
+      <section id="process" className="py-24 scroll-section bg-process">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-100">
@@ -473,7 +533,7 @@ export default function SatelliteConnect() {
       <section id="reviews" className="py-24 bg-white scroll-section">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4  tracking-tight ">
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">
               Trusted by{" "}
               <span className="text-gradient-primary"> Thousands</span>
             </h2>
@@ -587,7 +647,7 @@ export default function SatelliteConnect() {
             <div className="lg:col-span-7 card-animate">
               <form
                 onSubmit={handleSubmit}
-                className="bg-gray-50 p-12 rounded-[3rem] border border-gray-100 space-y-4 hover:shadow-2xl transition-shadow duration-500"
+                className="bg-gray-50 lg:p-12 p-4 rounded-[3rem] border border-gray-100 space-y-4 hover:shadow-2xl transition-shadow duration-500"
               >
                 <input
                   name="name"
