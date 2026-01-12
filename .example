@@ -1,0 +1,7 @@
+
+
+EMAIL_USER=info@satelliteconnect.site
+EMAIL_PASS=S@t3LL!t3C0nn3ctTX77083
+EMAIL_HOST=smtpout.secureserver.net
+EMAIL_PORT=465
+NODE_ENV=production
