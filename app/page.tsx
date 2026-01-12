@@ -19,28 +19,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-// Grid Pattern Component
-function GridPattern() {
-  return (
-    <div className="absolute inset-0 overflow-hidden opacity-10">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #2563eb 1px, transparent 1px),
-            linear-gradient(to bottom, #2563eb 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-          maskImage:
-            "radial-gradient(circle at center, black, transparent 70%)",
-          WebkitMaskImage:
-            "radial-gradient(circle at center, black, transparent 70%)",
-        }}
-      />
-    </div>
-  );
-}
-
 export default function SatelliteConnect() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -102,22 +80,19 @@ export default function SatelliteConnect() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-0 h-20 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="flex items-center ">
-              <div className="relative w-10 h-10">
+              <div className="relative ">
                 <Image
-                  src="/logos/fav.svg"
+                  src="/logos/logo.png"
                   alt="Satellite Connect Logo"
-                  width={40}
+                  width={160}
                   height={40}
                   className="h-10 w-auto"
                   priority
                 />
               </div>
-              <span className="text-xl font-bold tracking-tight  bg-clip-text text-black">
-                Satellite Connect
-              </span>
             </div>
           </div>
           <div className="hidden md:flex gap-8 items-center font-semibold text-sm uppercase tracking-wider">
@@ -146,7 +121,7 @@ export default function SatelliteConnect() {
       <section id="home" className="pt-40 pb-16 px-4 relative overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-blue-100 text-primary text-xs font-bold uppercase tracking-widest shadow-sm animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 backdrop-blur-sm border border-blue-100 text-primary text-xs font-bold uppercase tracking-widest shadow-sm animate-fade-in">
               Professional Satellite Solutions
             </div>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight animate-slide-up">
@@ -247,14 +222,13 @@ export default function SatelliteConnect() {
         </div>
       </section>
 
-      {/* Rest of your existing sections remain the same... */}
       {/* Trust Bar */}
-      <section className="py-12 bg-gray-50/50 border-y border-gray-100">
+      <section className="pt-12  ">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">
             Secure Payments Accepted Via
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
             <span className="text-2xl font-black italic text-blue-800">
               VISA
             </span>
@@ -303,10 +277,10 @@ export default function SatelliteConnect() {
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="py-24 bg-white scroll-section">
+      <section id="solutions" className="py-24 bg-gray-50 scroll-section">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 uppercase tracking-tight">
+            <h2 className="text-4xl font-bold mb-4  tracking-tight">
               One-Stop <span className="text-gradient-primary">Solutions</span>
             </h2>
             <p className="text-gray-500">
@@ -362,13 +336,95 @@ export default function SatelliteConnect() {
           </div>
         </div>
       </section>
+      {/* Technology & Heartland Section */}
+      <section className="py-24 bg-white scroll-section">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Row 1: Text Left, Image Right */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
+            <div className="space-y-8 card-animate">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+                Experience cutting-edge technology in Dish TV
+              </h1>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Our advanced satellite systems deliver crystal-clear 4K
+                resolution, lightning-fast channel switching, and reliable
+                connectivity even in severe weather conditions. Experience
+                entertainment like never before.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 bg-gradient-primary text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition-transform hover:shadow-xl"
+              >
+                Get Your Connection Today <ArrowRight size={20} />
+              </a>
+            </div>
+            <div className="card-animate">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-primary rounded-[3rem] opacity-20 blur-lg animate-pulse" />
+                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                  <img
+                    src="/images/about_1.png"
+                    alt="Cutting-edge Dish TV technology"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                {/* Floating tech badge */}
+                <div className="absolute -top-4 -right-4 bg-gradient-primary text-white px-6 py-3 rounded-2xl shadow-xl rotate-3 animate-smooth-float">
+                  <p className="text-sm font-black tracking-wider">
+                    TECH ADVANCED
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          {/* Row 2: Image Left, Text Right (Reversed) */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="card-animate ">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-primary rounded-[3rem] opacity-20 blur-lg animate-pulse" />
+                <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
+                  <img
+                    src="/images/about_2.png"
+                    alt="Family enjoying TV together"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                {/* Floating family badge */}
+                <div className="absolute -bottom-4 -left-4 bg-gradient-primary text-white px-6 py-3 rounded-2xl shadow-xl -rotate-3 animate-smooth-float">
+                  <p className="text-sm font-black tracking-wider">
+                    FAMILY FOCUSED
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-8 card-animate lg:order-1 order-2">
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+                TV made for the heartland, where family, stories & moments
+                matter
+              </h1>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                More than just entertainment, our service brings families
+                together. Share laughter, create memories, and bond over shows
+                that resonate with your values. Quality time starts with quality
+                connection.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-3 bg-gradient-primary text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:scale-105 transition-transform hover:shadow-xl"
+              >
+                Get Your Connection Today <ArrowRight size={20} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Process Section */}
-      <section id="process" className="py-24 bg-gray-50 scroll-section">
+      <section id="process" className="py-24  scroll-section bg-process">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Our <span className="text-gradient-primary">Process</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-100">
+              Our Process
             </h2>
           </div>
           <div className="grid md:grid-cols-4 gap-8">
@@ -417,8 +473,9 @@ export default function SatelliteConnect() {
       <section id="reviews" className="py-24 bg-white scroll-section">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 uppercase tracking-tight text-gradient-primary">
-              Trusted by Thousands
+            <h2 className="text-4xl font-bold mb-4  tracking-tight ">
+              Trusted by{" "}
+              <span className="text-gradient-primary"> Thousands</span>
             </h2>
             <div className="flex justify-center gap-1 text-orange-400">
               {[...Array(5)].map((_, j) => (
@@ -431,14 +488,17 @@ export default function SatelliteConnect() {
               {
                 name: "James Wilson",
                 text: "The installation was spotless. I haven't had a single signal drop even in Houston storms.",
+                image: "/images/review_1.png",
               },
               {
                 name: "Sarah Chen",
                 text: "Professional team that respected our office hours. Highly recommended for commercial setups.",
+                image: "/images/review_2.png",
               },
               {
                 name: "Marcus Reed",
                 text: "The only satellite partner we trust. Their spare parts are always genuine and high quality.",
+                image: "/images/review_3.png",
               },
             ].map((t, i) => (
               <div
@@ -453,7 +513,15 @@ export default function SatelliteConnect() {
                   "{t.text}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-gradient-primary rounded-full group-hover:scale-110 transition-transform" />
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
+                    <Image
+                      src={t.image}
+                      alt={t.name}
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <p className="font-bold text-gray-900">{t.name}</p>
                 </div>
               </div>
@@ -463,7 +531,7 @@ export default function SatelliteConnect() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-white scroll-section">
+      <section id="contact" className="py-24 bg-gray-50 scroll-section">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-8">
@@ -577,13 +645,12 @@ export default function SatelliteConnect() {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/logos/fav-white.png"
+                  src="/logos/logo.png"
                   alt="Satellite Connect Logo"
-                  width={32}
+                  width={160}
                   height={32}
                   className="h-8 w-auto"
                 />
-                <span className="text-xl font-bold">Satellite Connect</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Houston's premier satellite infrastructure experts.

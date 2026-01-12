@@ -172,7 +172,12 @@
 .section-visible .card-animate:nth-child(6) {
   transition-delay: 0.6s;
 }
-
+.bg-process {
+  background-image: url("/images/our_process_bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 /* Ensure hero section content is above background */
 section#home > * {
   position: relative;
