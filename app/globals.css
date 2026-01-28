@@ -178,13 +178,53 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-/* Ensure hero section content is above background */
 section#home > * {
   position: relative;
   z-index: 10;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes smooth-float-delay {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+.animate-smooth-float-delay {
+  animation: smooth-float-delay 6s ease-in-out infinite;
+  animation-delay: 1s;
 }
