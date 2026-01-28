@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, K2D } from "next/font/google";
 import "./globals.css";
+import Navigation from "@/components/shared/navigation";
+import Footer from "@/components/shared/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,7 +32,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Satellite Connect" }],
   robots: "index, follow",
-
   icons: {
     icon: [
       { url: "/logos/fav.svg", type: "image/svg+xml" },
@@ -39,7 +40,6 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png" }],
   },
   manifest: "/site.webmanifest",
-
   openGraph: {
     type: "website",
     title: "Satellite Connect - Your Trusted Satellite Network Provider",
@@ -47,15 +47,13 @@ export const metadata: Metadata = {
       "Professional satellite connection services with end-to-end customer support",
     images: [
       {
-        url: "/og-image.png", // Optional: create this later
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Satellite Connect",
       },
     ],
   },
-
-  // Twitter
   twitter: {
     card: "summary_large_image",
     title: "Satellite Connect - Premium Satellite Services",
@@ -71,16 +69,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${k2d.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         <meta name="theme-color" content="#2563eb" />
         <meta name="msapplication-TileColor" content="#2563eb" />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased bg-white">
+        {/* Only show Navigation & Footer for the main page */}
+        <Navigation />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

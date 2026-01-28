@@ -12,7 +12,7 @@ type ResponseData = {
   message: string;
   success: boolean;
   error?: string;
-  previewUrl?: string; // For development testing
+  previewUrl?: string;
 };
 
 export default async function handler(
@@ -29,7 +29,6 @@ export default async function handler(
   try {
     const { name, email, phone, message } = req.body as ContactRequestBody;
 
-    // Validation
     if (!name || !email || !phone || !message) {
       return res.status(400).json({
         message: "All fields are required",
