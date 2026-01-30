@@ -17,7 +17,7 @@ export const POLICY_LINKS = [
 ] as const;
 
 export const CONTACT_INFO = {
-  phone: "307-206-0647",
+  phone: "832-220-8949",
   email: "info@satelliteconnect.site",
   address: "16711 Cold Harbour LN, Houston, TX",
 } as const;
